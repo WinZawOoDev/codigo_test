@@ -2,6 +2,8 @@ import StoreProvider from '@/providers/storeProvider'
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import SideBar from '@/components/navigations/SideBar'
+import PersistProvider from '@/providers/persistProvider'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -19,7 +21,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <StoreProvider>
-          {children}
+          <PersistProvider>
+            <SideBar />
+            {children}
+          </PersistProvider>
         </StoreProvider>
       </body>
     </html>
